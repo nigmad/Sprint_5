@@ -1,5 +1,4 @@
 import pytest
-import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -22,11 +21,10 @@ def driver():
 
 @pytest.fixture()
 def login(driver):
-    driver.get(Curls.auth_endpoint)
-    driver.find_element(*Locators.NAME).send_keys(Credentials.name)
+    driver.get(Curls.login_page)
     driver.find_element(*Locators.EMAIL).send_keys(Credentials.email)
     driver.find_element(*Locators.PASSWORD).send_keys(Credentials.password)
-    driver.find_element(*Locators.REG_BUTTON).click()
+    driver.find_element(*Locators.LOGIN_BUTTON).click()
 
 
 

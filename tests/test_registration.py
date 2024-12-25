@@ -5,7 +5,6 @@ from locators import Locators
 from helper import generate_registration_data
 
 class TestRegistrationWithNewCredentials:
-
     def test_success_registration(self, driver):
         # Arrange
         driver.get(Curls.auth_endpoint)
@@ -18,12 +17,11 @@ class TestRegistrationWithNewCredentials:
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located(Locators.LOGIN_FORM))
         # Assert
         assert driver.current_url == Curls.login_page
-        driver.quit()
+
 
 
 
 class TestRegistrationIncorrectPasswordFailed:
-
     def test_incorrect_password_registration(self, driver):
         # Arrange
         driver.get(Curls.auth_endpoint)
@@ -37,7 +35,7 @@ class TestRegistrationIncorrectPasswordFailed:
         # Assert:
         WebDriverWait(driver, 20).until(EC.visibility_of_element_located(Locators.ERROR_MESSAGE))
         assert driver.current_url == Curls.auth_endpoint
-        driver.quit()
+
 
 
 
